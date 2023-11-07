@@ -4,27 +4,33 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-/** User must be logged in to access tasks. */
-router.use((req, res, next) => {
-  if (!res.locals.user) {
-    return next(new ServerError(401, "You must be logged in."));
-  }
-  next();
-});
 
-/** Sends all tasks */
+/** Sends all students */
 router.get("/", async (req, res, next) => {
   try {
-    const tasks = await prisma.task.findMany({
-      where: { userId: res.locals.user.id },
-    });
-    res.json(tasks);
+    const students = await prisma.student.findMany();
+    res.json(students);
   } catch (err) {
     next(err);
   }
 });
 
-/** Creates new task and sends it */
+
+/** CHANGE FOR SINGLE STUDENT */
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+
+    const task = await prisma.task.findUnique({ where: { id } });
+    validateTask(res.locals.user, task);
+
+    res.json(task);
+  } catch (err) {
+    next(err);
+  }
+});
+
+/** CHANGE FOR ADDING A STUDENT */
 router.post("/", async (req, res, next) => {
   try {
     const { description, done } = req.body;
@@ -45,32 +51,22 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/** Checks if task exists and belongs to given user */
-const validateTask = (user, task) => {
-  if (!task) {
-    throw new ServerError(404, "Task not found.");
-  }
-
-  if (task.userId !== user.id) {
-    throw new ServerError(403, "This task does not belong to you.");
-  }
-};
-
-/** Sends single task by id */
-router.get("/:id", async (req, res, next) => {
+/** CHANGE FOR DELETING A STUDENT */
+router.delete("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
     const task = await prisma.task.findUnique({ where: { id } });
     validateTask(res.locals.user, task);
 
-    res.json(task);
+    await prisma.task.delete({ where: { id } });
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
 });
 
-/** Updates single task by id */
+/** CHANGE FOR UPDATING A STUDENT */
 router.put("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
@@ -84,21 +80,6 @@ router.put("/:id", async (req, res, next) => {
       data: { description, done },
     });
     res.json(updatedTask);
-  } catch (err) {
-    next(err);
-  }
-});
-
-/** Deletes single task by id */
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
-
-    await prisma.task.delete({ where: { id } });
-    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

@@ -15,7 +15,22 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-/** Creates new task and sends it */
+
+/** CHANGE FOR SINGLE STUDENT */
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+
+    const task = await prisma.task.findUnique({ where: { id } });
+    validateTask(res.locals.user, task);
+
+    res.json(task);
+  } catch (err) {
+    next(err);
+  }
+});
+
+/** CHANGE FOR ADDING A STUDENT */
 router.post("/", async (req, res, next) => {
   try {
     const { description, done } = req.body;
@@ -36,32 +51,22 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-/** Checks if task exists and belongs to given user */
-const validateTask = (user, task) => {
-  if (!task) {
-    throw new ServerError(404, "Task not found.");
-  }
-
-  if (task.userId !== user.id) {
-    throw new ServerError(403, "This task does not belong to you.");
-  }
-};
-
-/** Sends single task by id */
-router.get("/:id", async (req, res, next) => {
+/** CHANGE FOR DELETING A STUDENT */
+router.delete("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
     const task = await prisma.task.findUnique({ where: { id } });
     validateTask(res.locals.user, task);
 
-    res.json(task);
+    await prisma.task.delete({ where: { id } });
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
 });
 
-/** Updates single task by id */
+/** CHANGE FOR UPDATING A STUDENT */
 router.put("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
@@ -75,21 +80,6 @@ router.put("/:id", async (req, res, next) => {
       data: { description, done },
     });
     res.json(updatedTask);
-  } catch (err) {
-    next(err);
-  }
-});
-
-/** Deletes single task by id */
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
-
-    await prisma.task.delete({ where: { id } });
-    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

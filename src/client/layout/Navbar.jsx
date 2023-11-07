@@ -17,6 +17,7 @@ export default function Navbar() {
       <menu>
         <li>
           <NavLink to="/">Home</NavLink>
+          <NavLink to="/students">Roster</NavLink>
         </li>
       </menu>
     </nav>

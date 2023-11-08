@@ -51,20 +51,19 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// /** CHANGE FOR DELETING A STUDENT */
-// router.delete("/:id", async (req, res, next) => {
-//   try {
-//     const id = +req.params.id;
+/** CHANGE FOR DELETING A STUDENT */
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
 
-//     const task = await prisma.task.findUnique({ where: { id } });
-//     validateTask(res.locals.user, task);
+    const student = await prisma.student.findUnique({ where: { id } });
 
-//     await prisma.task.delete({ where: { id } });
-//     res.sendStatus(204);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+    await prisma.student.delete({ where: { id } });
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // /** CHANGE FOR UPDATING A STUDENT */
 // router.put("/:id", async (req, res, next) => {

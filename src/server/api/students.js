@@ -57,7 +57,12 @@ router.delete("/:id", async (req, res, next) => {
     const id = +req.params.id;
 
     const student = await prisma.student.findUnique({ where: { id } });
-
+    if (!student) {
+      return next({
+        status: 404,
+        message: 'Could not find that student'
+      })
+    }
     await prisma.student.delete({ where: { id } });
     res.sendStatus(204);
   } catch (err) {
@@ -72,7 +77,12 @@ router.put("/:id", async (req, res, next) => {
     const { firstName, lastName, email, imageUrl, gpa } = req.body;
 
     const student = await prisma.student.findUnique({ where: { id } });
-
+    if (!student) {
+      return next({
+        status: 404,
+        message: 'Could not find that student'
+      })
+    }
     const updatedStudent = await prisma.student.update({
       where: { id },
       data: {

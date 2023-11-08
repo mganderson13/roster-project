@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function StudentCard({ student }) {
+    console.log("student card", StudentCard);
 return (
     <div className="student-card">
         <section className="student-info">
@@ -12,4 +13,6 @@ return (
         <Link className="student-info" to={`students/${student.id}`}> Student Details </Link>
     </div>
 );
+
+
 }

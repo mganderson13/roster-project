@@ -1,8 +1,8 @@
 //Not sure about these paths/imports 
-import { useGetStudentsQuery } from "./studentSlice.js";
+import { useGetStudentsQuery } from "./student/studentSlice.js";
 import StudentCard from "./components/studentcard.jsx";
 //new student stuff
-import AddNewStudent from "";
+// import AddNewStudent from "";
 
 function StudentList() {
     const { data: students, isLoading } = useGetStudentsQuery();
@@ -18,7 +18,7 @@ function StudentList() {
             </ul>
           )}
           <h2>Add a new student:</h2>
-          <AddNewStudent />
+          {/* <AddNewStudent /> */}
         </div>
       );
 }

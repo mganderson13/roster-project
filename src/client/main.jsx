@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import StudentList from "./features/StudentList";
 import "./index.less";
 
 import { Provider } from "react-redux";

@@ -16,71 +16,71 @@ router.get("/", async (req, res, next) => {
 });
 
 
-/** CHANGE FOR SINGLE STUDENT */
-router.get("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
+// /** CHANGE FOR SINGLE STUDENT */
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     const id = +req.params.id;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
+//     const task = await prisma.task.findUnique({ where: { id } });
+//     validateTask(res.locals.user, task);
 
-    res.json(task);
-  } catch (err) {
-    next(err);
-  }
-});
+//     res.json(task);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-/** CHANGE FOR ADDING A STUDENT */
-router.post("/", async (req, res, next) => {
-  try {
-    const { description, done } = req.body;
-    if (!description) {
-      throw new ServerError(400, "Description required.");
-    }
+// /** CHANGE FOR ADDING A STUDENT */
+// router.post("/", async (req, res, next) => {
+//   try {
+//     const { description, done } = req.body;
+//     if (!description) {
+//       throw new ServerError(400, "Description required.");
+//     }
 
-    const task = await prisma.task.create({
-      data: {
-        description,
-        done: done ?? false,
-        user: { connect: { id: res.locals.user.id } },
-      },
-    });
-    res.json(task);
-  } catch (err) {
-    next(err);
-  }
-});
+//     const task = await prisma.task.create({
+//       data: {
+//         description,
+//         done: done ?? false,
+//         user: { connect: { id: res.locals.user.id } },
+//       },
+//     });
+//     res.json(task);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-/** CHANGE FOR DELETING A STUDENT */
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
+// /** CHANGE FOR DELETING A STUDENT */
+// router.delete("/:id", async (req, res, next) => {
+//   try {
+//     const id = +req.params.id;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
+//     const task = await prisma.task.findUnique({ where: { id } });
+//     validateTask(res.locals.user, task);
 
-    await prisma.task.delete({ where: { id } });
-    res.sendStatus(204);
-  } catch (err) {
-    next(err);
-  }
-});
+//     await prisma.task.delete({ where: { id } });
+//     res.sendStatus(204);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
-/** CHANGE FOR UPDATING A STUDENT */
-router.put("/:id", async (req, res, next) => {
-  try {
-    const id = +req.params.id;
-    const { description, done } = req.body;
+// /** CHANGE FOR UPDATING A STUDENT */
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     const id = +req.params.id;
+//     const { description, done } = req.body;
 
-    const task = await prisma.task.findUnique({ where: { id } });
-    validateTask(res.locals.user, task);
+//     const task = await prisma.task.findUnique({ where: { id } });
+//     validateTask(res.locals.user, task);
 
-    const updatedTask = await prisma.task.update({
-      where: { id },
-      data: { description, done },
-    });
-    res.json(updatedTask);
-  } catch (err) {
-    next(err);
-  }
-});
+//     const updatedTask = await prisma.task.update({
+//       where: { id },
+//       data: { description, done },
+//     });
+//     res.json(updatedTask);
+//   } catch (err) {
+//     next(err);
+//   }
+// });

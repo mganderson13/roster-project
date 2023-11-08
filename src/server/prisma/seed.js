@@ -38,7 +38,7 @@ const seed = async () => {
         firstName: 'Jack',
         lastName: 'Black',
         email: 'letsrock@schoolofrock.com',
-        imageUrl:'https://static.wikia.nocookie.net/schoolofrock/images/4/4f/Dewey-finn.jpg/revision/latest?cb=20090330021401',
+        imageUrl:'https://m.media-amazon.com/images/M/MV5BMTJhMzNmMzAtNDg2ZC00NjIyLWE1MDUtYWQ0NDE3NjUxYzhhXkEyXkFqcGdeQXVyODYzNDY3MjE@._V1_.jpg',
         gpa: 1.7
       },
     });

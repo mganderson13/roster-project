@@ -48,4 +48,4 @@ const studentsApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetStudentsQuery, useGetStudentQuery } = studentsApi;
+export const { useGetStudentsQuery, useGetStudentQuery, useCreateStudentMutation, useUpdateStudentMutation, useDeleteStudentMutation } = studentsApi;

@@ -32,10 +32,10 @@ router.get("/:id", async (req, res, next) => {
 /** CHANGE FOR ADDING A STUDENT */
 router.post("/", async (req, res, next) => {
   try {
-    const { firstName, lastName, email, imageUrl, gpa } = req.body;
-    if (!firstName || !lastName || !email || !imageUrl || !gpa) {
-      // Throw a ServerError with a 400 status and a custom error message
-      throw new ServerError(400, "All fields are required.");}
+    const { firstName, lastName, email, imageUrl, gpa} = req.body;
+    // if (!firstName || !lastName || !email || !imageUrl || !gpa) {
+    //   // Throw a ServerError with a 400 status and a custom error message
+    //   throw new ServerError(400, "All fields are required.");}
     const student = await prisma.student.create({
       data: {
         firstName,

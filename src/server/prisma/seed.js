@@ -9,7 +9,7 @@ const seed = async () => {
         lastName: 'Jolie',
         email: 'angelinajolie@hotcelebs.com',
         imageUrl: 'https://www.hollywoodreporter.com/wp-content/uploads/2017/08/AngelinaJolieSOPHP2017.jpg?w=800',
-        gpa: 4.01 
+        gpa: 4.1 
       },
     });
 
@@ -19,7 +19,7 @@ const seed = async () => {
         lastName: 'Minaj',
         email: 'pullupinmytonka@colorofwillywonka.com',
         imageUrl:'https://pbs.twimg.com/media/FcoIEgUX0AIpqpw.jpg',
-        gpa: 4.02
+        gpa: 4.2
       },
     });
 

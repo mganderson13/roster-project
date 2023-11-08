@@ -15,7 +15,13 @@ const studentsApi = api.injectEndpoints({
     query: (student) => ({
       url: "/students",
       method: "POST",
-      body: student,
+      body: {
+        firstName,
+        lastName,
+        email,
+        imageUrl,
+        gpa
+      },
     }),
     invalidatesTags: ["Students"],
   }),
@@ -23,7 +29,13 @@ const studentsApi = api.injectEndpoints({
     query: (student) => ({
       url: `/students/${id}`,
       method: "PUT",
-      body: student,
+      body: {
+        firstName,
+        lastName,
+        email,
+        imageUrl,
+        gpa
+      },
     }),
     invalidatesTags: ["Students"],
   }),

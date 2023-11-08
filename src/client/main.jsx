@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import StudentList from "./features/StudentList";
+import StudentList from "./features/student/StudentList.jsx";
+
 import "./index.less";
 
 import { Provider } from "react-redux";

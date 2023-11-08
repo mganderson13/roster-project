@@ -1,6 +1,6 @@
 import api from "../../store/api";
 
-const studentApi = api.injectEndpoints({
+const studentsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getStudents: builder.query({
       query: () => "/students",
@@ -13,4 +13,4 @@ const studentApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetStudentsQuery, useGetStudentQuery } = studentApi;
+export const { useGetStudentsQuery, useGetStudentQuery } = studentsApi;

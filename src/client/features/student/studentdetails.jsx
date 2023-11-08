@@ -3,21 +3,16 @@ import { useGetStudentQuery } from "./studentSlice";
 
 export default function StudentDetails() {
   const { id } = useParams();
-  const { data: students } = useGetStudentQuery();
-
-  const numId = +id;
-  console.log(numId);
-  console.log(typeof numId);
-  //console.log("data", data);
-  console.log("students", students);
-
-  const student = students?.find((student) => student.id === numId);
+  // data: student remanes data to student
+  const { data: student, isLoading } = useGetStudentQuery(id);
 
   if (!student) {
     return <p>Student not found</p>;
   }
 
-  return (
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <div>
       <h2>
         {student.firstName} {student.lastName}

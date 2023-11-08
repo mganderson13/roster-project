@@ -16,19 +16,18 @@ router.get("/", async (req, res, next) => {
 });
 
 
-// /** CHANGE FOR SINGLE STUDENT */
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     const id = +req.params.id;
+/** CHANGE FOR SINGLE STUDENT */
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
 
-//     const task = await prisma.task.findUnique({ where: { id } });
-//     validateTask(res.locals.user, task);
+    const student = await prisma.student.findUnique({ where: { id } });
 
-//     res.json(task);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+    res.json(student);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // /** CHANGE FOR ADDING A STUDENT */
 // router.post("/", async (req, res, next) => {

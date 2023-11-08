@@ -29,26 +29,27 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// /** CHANGE FOR ADDING A STUDENT */
-// router.post("/", async (req, res, next) => {
-//   try {
-//     const { description, done } = req.body;
-//     if (!description) {
-//       throw new ServerError(400, "Description required.");
-//     }
-
-//     const task = await prisma.task.create({
-//       data: {
-//         description,
-//         done: done ?? false,
-//         user: { connect: { id: res.locals.user.id } },
-//       },
-//     });
-//     res.json(task);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+/** CHANGE FOR ADDING A STUDENT */
+router.post("/", async (req, res, next) => {
+  try {
+    const { firstName, lastName, email, imageUrl, gpa } = req.body;
+    if (!firstName || !lastName || !email || !imageUrl || !gpa) {
+      // Throw a ServerError with a 400 status and a custom error message
+      throw new ServerError(400, "All fields are required.");}
+    const student = await prisma.student.create({
+      data: {
+        firstName,
+        lastName,
+        email, 
+        imageUrl,
+        gpa,
+      },
+    });
+    res.json(student);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // /** CHANGE FOR DELETING A STUDENT */
 // router.delete("/:id", async (req, res, next) => {

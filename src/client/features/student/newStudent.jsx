@@ -12,10 +12,14 @@ export default function NewStudent(){
 
 
 const [createStudent] = useCreateStudentMutation();
-
 const create = async (evt) => {
     evt.preventDefault();
-    createStudent({ formData });
+    try {
+        const response = await createStudent(formData);
+        console.log(response);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 return (
@@ -23,28 +27,28 @@ return (
         <label className="form-first-name">First Name 
         <input type = "text"
         value = {formData.firstName}
-        onChange={(e) => setFormData(e.target.value)}
+        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
         required>   
         </input>
         </label>
         <label className="form-last-name">Last Name 
         <input type = "text"
         value = {formData.lastName}
-        onChange={(e) => setFormData(e.target.value)}
+        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
         required>   
         </input>
         </label>
         <label className="form-email">Student Email
         <input type = "text"
         value = {formData.email}
-        onChange={(e) => setFormData(e.target.value)}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         required>   
         </input>
         </label>
         <label className="form-imageUrl">link to submit a student photo
         <input type = "text"
         value = {formData.imageUrl}
-        onChange={(e) => setFormData(e.target.value)}
+        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
         required>   
         </input>
         </label>
@@ -52,7 +56,7 @@ return (
         <input type = "number"
         step = "0.01"
         value = {formData.gpa}
-        onChange={(e) => setFormData(e.target.value)}
+        onChange={(e) => setFormData({ ...formData, gpa: e.target.value })}
         required>   
         </input>
         </label>

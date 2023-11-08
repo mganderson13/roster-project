@@ -65,21 +65,26 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-// /** CHANGE FOR UPDATING A STUDENT */
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     const id = +req.params.id;
-//     const { description, done } = req.body;
+/** CHANGE FOR UPDATING A STUDENT */
+router.put("/:id", async (req, res, next) => {
+  try {
+    const id = +req.params.id;
+    const { firstName, lastName, email, imageUrl, gpa } = req.body;
 
-//     const task = await prisma.task.findUnique({ where: { id } });
-//     validateTask(res.locals.user, task);
+    const student = await prisma.student.findUnique({ where: { id } });
 
-//     const updatedTask = await prisma.task.update({
-//       where: { id },
-//       data: { description, done },
-//     });
-//     res.json(updatedTask);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+    const updatedStudent = await prisma.student.update({
+      where: { id },
+      data: {
+        firstName,
+        lastName,
+        email, 
+        imageUrl,
+        gpa,
+      },
+    });
+    res.json(updatedStudent);
+  } catch (err) {
+    next(err);
+  }
+});

@@ -4,7 +4,6 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-
 /** Sends all students */
 router.get("/", async (req, res, next) => {
   try {
@@ -14,7 +13,6 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
-
 
 /** CHANGE FOR SINGLE STUDENT */
 router.get("/:id", async (req, res, next) => {

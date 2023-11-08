@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Root from "./layout/Root.jsx";
+import StudentDetails from "./features/student/studentdetails.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <StudentList /> },
       { path: "/students", element: <StudentList /> },
+      { path: "/students/:id", element: <StudentDetails /> },
     ],
   },
 ]);

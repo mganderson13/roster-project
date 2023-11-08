@@ -9,7 +9,7 @@ export default function NewStudent(){
         imageUrl: '',
         gpa: null,
     })
-}
+
 
 const [createStudent] = useCreateStudentMutation();
 
@@ -59,4 +59,4 @@ return (
       <button type= "submit"> Submit New Student</button>
         
     </form>
-)
+)};

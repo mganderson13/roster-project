@@ -9,7 +9,7 @@ const seed = async () => {
         lastName: 'Jolie',
         email: 'angelinajolie@hotcelebs.com',
         imageUrl: 'https://www.hollywoodreporter.com/wp-content/uploads/2017/08/AngelinaJolieSOPHP2017.jpg?w=800',
-        gpa: 4.01 
+        gpa: 4.1 
       },
     });
 
@@ -19,7 +19,7 @@ const seed = async () => {
         lastName: 'Minaj',
         email: 'pullupinmytonka@colorofwillywonka.com',
         imageUrl:'https://pbs.twimg.com/media/FcoIEgUX0AIpqpw.jpg',
-        gpa: 4.02
+        gpa: 4.2
       },
     });
 
@@ -38,7 +38,7 @@ const seed = async () => {
         firstName: 'Jack',
         lastName: 'Black',
         email: 'letsrock@schoolofrock.com',
-        imageUrl:'https://static.wikia.nocookie.net/schoolofrock/images/4/4f/Dewey-finn.jpg/revision/latest?cb=20090330021401',
+        imageUrl:'https://m.media-amazon.com/images/M/MV5BMTJhMzNmMzAtNDg2ZC00NjIyLWE1MDUtYWQ0NDE3NjUxYzhhXkEyXkFqcGdeQXVyODYzNDY3MjE@._V1_.jpg',
         gpa: 1.7
       },
     });

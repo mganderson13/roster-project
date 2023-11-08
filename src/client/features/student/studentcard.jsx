@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function StudentCard({ student }) {
-    console.log("student card", StudentCard);
+    // console.log("student card", StudentCard);
 return (
     <div className="student-card">
         <section className="student-info">

@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useGetStudentQuery } from "./studentSlice";
+import UpdateForm from "./updateStudentForm";
 
 export default function StudentDetails() {
+
   const { id } = useParams();
   // data: student remanes data to student
   const { data: student, isLoading } = useGetStudentQuery(id);
@@ -13,6 +15,7 @@ export default function StudentDetails() {
   return isLoading ? (
     <p>Loading...</p>
   ) : (
+    <>
     <div>
       <h2>
         {student.firstName} {student.lastName}
@@ -20,6 +23,8 @@ export default function StudentDetails() {
       <p>Email: {student.email}</p>
       <img src={student.imageUrl} />
       <p>Gpa: {student.gpa}</p>
-    </div>
+      </div>
+      <UpdateForm />
+    </>
   );
 }

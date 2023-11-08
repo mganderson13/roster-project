@@ -2,61 +2,55 @@ import { useState } from "react";
 import { useCreateStudentMutation } from "./studentSlice";
 
 export default function NewStudent(){
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        imageUrl: '',
-        gpa: null,
-    })
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [gpa, setGpa] = useState('');
+    
 
 
 const [createStudent] = useCreateStudentMutation();
 const create = async (evt) => {
     evt.preventDefault();
-    try {
-        const response = await createStudent(formData);
-        console.log(response);
-    } catch (error) {
-        console.error(error);
-    }
+    createStudent({firstName, lastName, email, imageUrl, gpa});
+
 };
 
 return (
     <form onSubmit={create}>
         <label className="form-first-name">First Name 
         <input type = "text"
-        value = {formData.firstName}
-        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+        value = {firstName}
+        onChange={(e) => setFirstName(e.target.value )}
         required>   
         </input>
         </label>
         <label className="form-last-name">Last Name 
         <input type = "text"
-        value = {formData.lastName}
-        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+        value = {lastName}
+        onChange={(e) => setLastName(e.target.value )}
         required>   
         </input>
         </label>
         <label className="form-email">Student Email
         <input type = "text"
-        value = {formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        value = {email}
+        onChange={(e) => setEmail(e.target.value )}
         required>   
         </input>
         </label>
         <label className="form-imageUrl">link to submit a student photo
         <input type = "text"
-        value = {formData.imageUrl}
-        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+        value = {imageUrl}
+        onChange={(e) => setImageUrl(e.target.value )}
         required>   
         </input>
         </label>
         <label className="form-gpa">GPA
         <input type = "number"
-        step = "0.01"
-        value = {formData.gpa}
-        onChange={(e) => setFormData({ ...formData, gpa: e.target.value })}
+        value = {gpa}
+        onChange={(e) => setGpa(e.target.value)}
         required>   
         </input>
         </label>

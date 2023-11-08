@@ -6,8 +6,8 @@ import NewStudent from "./newStudent.jsx";
 function StudentList() {
   const { data, isLoading, isError } = useGetStudentsQuery();
 
-  console.log("data", data);
-  console.log("isError", isError);
+  // console.log("data", data);
+  // console.log("isError", isError);
   return (
     <div className="studentList">
       <h1>Students:</h1>

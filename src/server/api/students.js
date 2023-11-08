@@ -42,7 +42,7 @@ router.post("/", async (req, res, next) => {
         lastName,
         email, 
         imageUrl,
-        gpa,
+        gpa: +gpa
       },
     });
     res.json(student);

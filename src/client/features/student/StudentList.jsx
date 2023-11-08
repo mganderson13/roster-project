@@ -1,6 +1,7 @@
 //Not sure about these paths/imports
 import { useGetStudentsQuery } from "./studentSlice.js";
 import StudentCard from "./studentcard.jsx";
+import NewStudent from "./newStudent.jsx";
 
 function StudentList() {
   const { data, isLoading, isError } = useGetStudentsQuery();
@@ -19,6 +20,7 @@ function StudentList() {
         </ul>
       )}
       <h2>Add a new student:</h2>
+      <NewStudent />
     </div>
   );
 }

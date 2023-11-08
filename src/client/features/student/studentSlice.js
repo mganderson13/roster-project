@@ -10,7 +10,6 @@ const studentsApi = api.injectEndpoints({
       query: (id) => `/students/${id}`,
       providesTags: ["Students"],
     }),
-  }),
   createStudent: builder.mutation({
     query: (student) => ({
       url: "/students",
@@ -46,6 +45,7 @@ const studentsApi = api.injectEndpoints({
     }),
     invalidatesTags: ["Students"],
   }),
-});
+}),
+})
 
 export const { useGetStudentsQuery, useGetStudentQuery, useCreateStudentMutation, useUpdateStudentMutation, useDeleteStudentMutation } = studentsApi;

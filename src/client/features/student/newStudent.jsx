@@ -40,7 +40,7 @@ return (
         required>   
         </input>
         </label>
-        <label className="form-imageUrl">link to submit a student photo: 
+        <label className="form-imageUrl">Link to student photo: 
         <input type = "text"
         value = {imageUrl}
         onChange={(e) => setImageUrl(e.target.value )}

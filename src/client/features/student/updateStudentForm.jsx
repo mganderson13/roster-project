@@ -16,7 +16,7 @@ export default function UpdateForm({ id }) {
   };
   return (
     <section>
-      <form onSubmit={update}>
+      <form className="update-form" onSubmit={update}>
         <label className="update-first-name">
           First Name
           <input

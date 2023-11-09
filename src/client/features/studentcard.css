@@ -1,0 +1,18 @@
+.student-card {
+  margin: 10px;
+  width: 45vw;
+  height: 65vh;
+  text-align: center;
+}
+
+.student_image {
+  height: 40vh;
+  max-width: 15vw;
+}
+
+.studentList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

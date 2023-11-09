@@ -30,7 +30,7 @@ router.get("/:id", async (req, res, next) => {
 /** CHANGE FOR ADDING A STUDENT */
 router.post("/", async (req, res, next) => {
   try {
-    const { firstName, lastName, email, imageUrl, gpa} = req.body;
+    const { firstName, lastName, email, imageUrl, gpa } = req.body;
     // if (!firstName || !lastName || !email || !imageUrl || !gpa) {
     //   // Throw a ServerError with a 400 status and a custom error message
     //   throw new ServerError(400, "All fields are required.");}
@@ -38,9 +38,9 @@ router.post("/", async (req, res, next) => {
       data: {
         firstName,
         lastName,
-        email, 
+        email,
         imageUrl,
-        gpa: +gpa
+        gpa: +gpa,
       },
     });
     res.json(student);
@@ -58,8 +58,8 @@ router.delete("/:id", async (req, res, next) => {
     if (!student) {
       return next({
         status: 404,
-        message: 'Could not find that student'
-      })
+        message: "Could not find that student",
+      });
     }
     await prisma.student.delete({ where: { id } });
     res.sendStatus(204);
@@ -78,17 +78,17 @@ router.put("/:id", async (req, res, next) => {
     if (!student) {
       return next({
         status: 404,
-        message: 'Could not find that student'
-      })
+        message: "Could not find that student",
+      });
     }
     const updatedStudent = await prisma.student.update({
       where: { id },
       data: {
         firstName,
         lastName,
-        email, 
+        email,
         imageUrl,
-        gpa,
+        gpa: +gpa,
       },
     });
     res.json(updatedStudent);

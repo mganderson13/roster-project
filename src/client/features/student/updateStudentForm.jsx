@@ -1,25 +1,26 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
 import { useUpdateStudentMutation } from "./studentSlice";
 
-export default function UpdateForm() {
+export default function UpdateForm({student}) {
+  // console.log(student)
 
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-const [email, setEmail] = useState('');
-const [imageUrl, setImageUrl] = useState('');
-const [gpa, setGpa] = useState('');
+const [firstName, setFirstName] = useState(student.firstName);
+const [lastName, setLastName] = useState(student.lastName);
+const [email, setEmail] = useState(student.email);
+const [imageUrl, setImageUrl] = useState(student.ImageUrl);
+const [gpa, setGpa] = useState(student.gpa);
 
-//const { id } = useParams();
+// const { id } = useParams();
 const [updateStudent] = useUpdateStudentMutation();
 
 const update = async (evt) => {
     evt.preventDefault();
-    updateStudent({firstName, lastName, email, imageUrl, gpa});
+    updateStudent({firstName,lastName,email,imageUrl,gpa});
   };
 return (
 <section>
-<form onSubmit={update}>
+<form className="edit-student-form" onSubmit={update}>
     <label className="update-first-name">First Name 
     <input type = "text"
     value = {firstName}
@@ -55,7 +56,7 @@ return (
     required>   
     </input>
     </label>
-  <button type= "submit">Update Student Info</button> 
+  <button className="form-button" type= "submit">Update Student Info</button> 
 </form>
 </section>
 )};

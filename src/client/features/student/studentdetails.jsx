@@ -24,7 +24,7 @@ export default function StudentDetails() {
       <img src={student.imageUrl} />
       <p>Gpa: {student.gpa}</p>
       </div>
-      <UpdateForm />
+      <UpdateForm student={student}/>
     </>
   );
 }

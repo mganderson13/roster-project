@@ -18,36 +18,36 @@ const create = async (evt) => {
 };
 
 return (
-    <form onSubmit={create}>
-        <label className="form-first-name">First Name 
+    <form className="new-form" onSubmit={create}>
+        <label className="form-first-name">First Name: 
         <input type = "text"
         value = {firstName}
         onChange={(e) => setFirstName(e.target.value )}
         required>   
         </input>
         </label>
-        <label className="form-last-name">Last Name 
+        <label className="form-last-name">Last Name: 
         <input type = "text"
         value = {lastName}
         onChange={(e) => setLastName(e.target.value )}
         required>   
         </input>
         </label>
-        <label className="form-email">Student Email
+        <label className="form-email">Student Email: 
         <input type = "text"
         value = {email}
         onChange={(e) => setEmail(e.target.value )}
         required>   
         </input>
         </label>
-        <label className="form-imageUrl">link to submit a student photo
+        <label className="form-imageUrl">link to submit a student photo: 
         <input type = "text"
         value = {imageUrl}
         onChange={(e) => setImageUrl(e.target.value )}
         required>   
         </input>
         </label>
-        <label className="form-gpa">GPA
+        <label className="form-gpa">GPA: 
         <input type = "number"
         value = {gpa}
         onChange={(e) => setGpa(e.target.value)}

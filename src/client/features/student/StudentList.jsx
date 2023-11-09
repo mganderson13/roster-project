@@ -2,6 +2,7 @@
 import { useGetStudentsQuery } from "./studentSlice.js";
 import StudentCard from "./studentcard.jsx";
 import NewStudent from "./newStudent.jsx";
+import "./studentcard.css"
 
 function StudentList() {
   const { data, isLoading, isError } = useGetStudentsQuery();
@@ -10,7 +11,7 @@ function StudentList() {
   // console.log("isError", isError);
   return (
     <div className="studentList">
-      <h1>Students:</h1>
+      <h1 className="students-header">Students:</h1>
       {isLoading && <p>Loading students...</p>}
       {data && (
         <ul>
@@ -19,7 +20,7 @@ function StudentList() {
           ))}
         </ul>
       )}
-      <h2>Add a new student:</h2>
+      <h2 className="add-student">Add a new student:</h2>
       <NewStudent />
     </div>
   );

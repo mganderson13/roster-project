@@ -18,6 +18,7 @@ return (
         <h3>{student.email}</h3>
         <h4>{student.gpa}</h4>
         <Link className="student-info" to={`students/${student.id}`}> Student Details </Link>
+        <br></br>
         <button className="delete-student-button" onClick={onDelete}>Delete Student</button>
     </div>
 );

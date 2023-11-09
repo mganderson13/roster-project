@@ -20,7 +20,7 @@ const studentsApi = api.injectEndpoints({
   }),
   updateStudent: builder.mutation({
     query: (student) => ({
-      url: `/students/${id}`,
+      url: `/students/${student.id}`,
       method: "PUT",
       body: student
     }),

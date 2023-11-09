@@ -6,7 +6,7 @@ export default function NewStudent(){
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const [gpa, setGpa] = useState('');
+    const [gpa, setGpa] = useState('')
     
 
 
